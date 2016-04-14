@@ -6,7 +6,7 @@
 
 	env: 	aliyun 
 	user : 	yunwei
-	IP ： 	101.200.89.67 ， 10.171.23.180 
+	IP ： 	***.200.89.*** ， **.171.23.*** 
 	Port： 	5000
 	docker version ： 1.10
 	
@@ -14,7 +14,7 @@
 	# sudo -i && vi /etc/pki/tls/openssl.cnf
 		[ v3_ca ]
 		# Extensions for a typical CA
-		subjectAltName = IP:101.200.89.67
+		subjectAltName = IP:***.200.89.***
 
 	# export REGISTRY_STORAGE_PATH=/data/docker/private-registry/storage
 	
@@ -28,8 +28,8 @@
 	# cd 
 	# mkdir -p certs
 	# mkdir -p certs && openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt
-	### input CN，Beijing, Beijing ,zhiguoguo, IT ,101.200.89.67:5000 
-	# cp /root/certs/domain.crt /etc/docker/certs.d/101.200.89.67:5000/ca.crt
+	### input CN，Beijing, Beijing ,zhiguoguo, IT ,***.200.89.***:5000 
+	# cp /root/certs/domain.crt /etc/docker/certs.d/***.200.89.***:5000/ca.crt
 	
 
 
@@ -45,7 +45,7 @@
 	
 	# docker pull hello-world
 
-	# docker tag hello-world 101.200.89.67:5000/hello-world:latest
+	# docker tag hello-world ***.200.89.***:5000/hello-world:latest
 
 	view pulled images in share volmun on host machine 
 	# ls -l $REGISTRY_STORAGE_PATH
@@ -56,11 +56,11 @@
 			
 ## 5.client:
 	提供docker client pull 使用
-	# cp /etc/docker/certs.d/101.200.89.67:5000/ca.crt /home/yunwei/ca.crt
+	# cp /etc/docker/certs.d/***.200.89.***:5000/ca.crt /home/yunwei/ca.crt
 
 	###
 	docker client copy crt file from server
-	$ sudo scp -r -P59000 yunwei@101.200.89.67:/home/yunwei/domain.crt /etc/docker/certs.d/101.200.89.67:5000/ca.crt
+	$ sudo scp -r -P59000 user@***.200.89.67:/home/user/domain.crt /etc/docker/certs.d/***.200.89.**:5000/ca.crt
 	###
 
 ## Q&A
